@@ -9,10 +9,11 @@ if( !isLogin()) {
 
 include "header.php";
 $all_messages = getMessages( $_SESSION['user_id'], false );
-#echo sizeof($all_messages);
+
 ?>
     <div class="messages_box">
         <?php
+        echo sizeof($all_messages);
         ?>
         <table style="width: 100%;" border="1">
             <tr>

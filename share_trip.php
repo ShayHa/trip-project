@@ -41,7 +41,7 @@ if (isset($_REQUEST['share_trip_btn'])) {
 
 include "header.php";
 ?>
-    <form action="share_trip.php" method="post" onsubmit="confirm('Thank you for the share! click ok to share')">
+    <form class="center_div" action="share_trip.php" method="post" onsubmit="confirm('Thank you for the share! click ok to share')">
         <table>
             <!-- Destination-->
             <tr>
@@ -72,7 +72,7 @@ include "header.php";
             <tr>
                 <td><span class="required"> * </span> Theme</td>
                 <td>
-                    <select name="theme_id" required>
+                    <select class="" name="theme_id" required>
                         <option value="">Theme</option>
                         <?php
                         $themes = getTableData('themes');
@@ -177,10 +177,10 @@ include "header.php";
             </tr>
             <tr>
                 <td>
-                    Thing to give up
+
                 </td>
                 <td>
-                    <textarea name="thing_to_give_up" cols="30" rows="10"></textarea>
+                    <textarea class="feedback-input" id="comment" name="thing_to_give_up" cols="30" rows="10" placeholder="Thing to give up"></textarea>
                 </td>
             </tr>
             <tr>

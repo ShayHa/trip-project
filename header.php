@@ -73,15 +73,16 @@
                     <li><a href="share_trip.php"> Share Your T(r)ip </a></li>
                     <?php
                     if( isLogin() && $_SESSION['is_admin'] == 1 ) { ?>
-                        <li><a href="search_reports.php"> Search reports </a></li>
-                        <li><a href="users_reports.php"> Users reports </a></li>
+                        <li><a href="search_reports.php"> Reports </a></li>
+
                     <?php
                     }
                     ?>
                     <?php
                     if( isLogin() ) { ?>
+                        <li><a href="user_trips.php"> My Tr(i)ps </a></li>
                         <li id="signin">
-                            <a href="user_trips.php">Hello <?php echo $_SESSION['first_name']; ?></a>
+                            <a href="#">Hello <?php echo $_SESSION['first_name']; ?></a>
                             <?php
                             $class = "no_messages";
                             if( $num_of_messages > 0 ) {

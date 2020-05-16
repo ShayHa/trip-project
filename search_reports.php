@@ -66,6 +66,10 @@ if( isset( $stat_data )) {
         </table>
     </form>
 
-    <div id="chart_div"></div>
+    <div id="chart_div">
+
+
+
+    </div>
 <?php
 include "footer.php";

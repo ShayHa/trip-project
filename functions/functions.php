@@ -3,10 +3,10 @@ session_start();
 
 define( "MAX_SEARCH_RESULTS", "5" );
 
-$host = "best-trip.cb3rxtjzqrat.eu-west-2.rds.amazonaws.com";#"localhost";
+$host = /*"best-trip.cb3rxtjzqrat.eu-west-2.rds.amazonaws.com";*/"localhost";
 $database = "besttrip";
-$user = "admin";#"root";
-$password = "12345678";
+$user = "root";#"admin";
+$password = "";
 
 $mysqli = new mysqli( $host, $user, $password, $database );
 $mysqli->set_charset('utf8' );
@@ -94,10 +94,13 @@ function insertSearchHistory( $type_id, $theme_id, $season_id, $price_id, $age_r
 function getSearchStats( $search_type ) { // $search_type => type_id, theme_id, season_id....
     global $mysqli;
     $sql = "SELECT `$search_type`, COUNT(*) AS `count` FROM `search_history` GROUP BY `$search_type`";
-    /*
-     $sql = "SELECT `seasons`.`id`, `search_history`.`$search_type`, `search_history`.COUNT(*) AS `count`
-            FROM `seasons` LEFT JOIN `search_history` GROUP BY `search_history`.`$search_type`";
-     */
+
+//     $sql = "SELECT `seasons`.`id`, `search_history`.`$search_type`, `search_history`.COUNT(*) AS `count`
+//            FROM `seasons` LEFT JOIN `search_history` GROUP BY `search_history`.`$search_type`";
+//    $sql = "select `$search_type`, COALESCE(count(search_history.season_id),0) AS `count`
+//            from seasons left join search_history on seasons.id = search_history.season_id group by season_name";
+//     echo $sql;
+
 
 
 
