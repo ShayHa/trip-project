@@ -1,0 +1,198 @@
+/*padding: top right bottom left*/
+*{
+    font-size: 20px;
+
+}
+body{
+    padding: 0;
+    margin: 0;
+    font-family:Calibri, sans-serif;
+
+}
+header{
+    background-color: #4c5c7e;
+    padding: 5px 0;
+}
+
+header a{
+    color: #fff;
+}
+
+main{
+    padding-top: 80px;
+    background-color: #729fc9;
+}
+img{
+    max-width: 100%;
+}
+h1, h2, h3, h4, h5 , h6{
+    margin-top: 0;
+}
+.content{
+    width: 1200px;
+    margin: 0 auto;
+    min-height: 92vh;
+    padding: 30px 0;
+}
+
+/* This is for header*/
+.nav{
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    overflow: hidden;
+    border-bottom: 2px solid;
+    border-bottom-color: black;
+    background-color: #4c5c7e;
+}
+
+.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    /*overflow: hidden;*/
+}
+
+.nav li {
+    float: left;
+    padding:0 20px;
+
+}
+
+.nav li a {
+    display: inline-block;
+    color: white;
+    padding: 15px 15px;
+    text-decoration: none;
+    /*text-transform:uppercase; */
+}
+
+#signin, #signup{
+    float:right;
+}
+
+#search_form{
+    background-color: #2e3f61;
+    min-height: 60px;
+    margin-bottom: 20px;
+}
+
+.search_form_field,
+.weight_col{
+    float: left;
+    width: 16.666667%;
+}
+
+.search_form_field select{
+    width: 100%;
+    background-color: #fff;
+    padding: 20px 33px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.search_form_field input[type="submit"]{
+    background-color: #637496;
+    border: none;
+    width: 100%;
+    padding: 21px;
+    color: #fff;
+    font-size: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.search_form_field input[type="submit"]:hover{
+    background-color: #768cb6;
+}
+
+#weights_section{
+
+}
+#weights{
+    display: none;
+    min-height: 40px;
+    color: #fff;
+}
+#change_weights{
+    display: inline-block;
+    background-color: #4C5C7E;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+.weight_col input[type="number"]{
+    display: inline-block;
+    width: 92%;
+    padding: 4px;
+}
+
+#search_results tr{
+    background-color: #fff;
+}
+#search_results td{
+    border: 2px solid #cf8262;
+    padding: 5px;
+    vertical-align: top;
+}
+
+.trip_info td{
+    padding: 6px;
+}
+
+.nav li a.no_messages,
+.nav li a.have_messages{
+    padding: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+}
+.nav li a.no_messages{
+    background-color: #22dd22;
+    color: #000;
+}
+.nav li a.have_messages {
+    background-color: #dd2222;
+}
+
+.message_row td{
+    padding: 5px;
+}
+.opened{
+    background-color: gray;
+}
+.not_opened{
+    background-color: #dd2222;
+    color: #fff;
+}
+
+.required {
+    color: #dd2222;
+
+}
+
+.sigi {
+    background: rgb(46, 63, 97);
+    padding: 20px;
+    border-radius: 20px;
+
+}
+
+
+#wrapper {
+    display: flex;
+}
+
+#left {
+    flex: 0 0 20%;
+}
+
+#right {
+    flex: 1;
+    padding: 7px;
+    color: #fbfbfb;
+}
