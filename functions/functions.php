@@ -198,3 +198,11 @@ function getRelation( $relation_type, $from, $to ) {
     $result = $mysqli->query( "SELECT `value` FROM `relations` WHERE `relation_type`='$relation_type' AND `from_relation`=$from AND `to_relation`=$to LIMIT 1" );
     return $result->fetch_assoc();
 }
+
+function getUserTrips($user_id){
+
+    global $mysqli;
+    $sql = "SELECT * FROM `trips` WHERE `user_id`=$user_id ORDER BY `date_added` DESC";
+    $result = $mysqli->query( $sql );
+    return $result->fetch_all( MYSQLI_ASSOC ); // [0 => ''] ['user_id' ]
+}

@@ -81,7 +81,7 @@
                     <?php
                     if( isLogin() ) { ?>
                         <li id="signin">
-                            <a href="#">Hello <?php echo $_SESSION['first_name']; ?></a>
+                            <a href="user_trips.php">Hello <?php echo $_SESSION['first_name']; ?></a>
                             <?php
                             $class = "no_messages";
                             if( $num_of_messages > 0 ) {
