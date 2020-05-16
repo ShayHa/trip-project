@@ -3,10 +3,10 @@ session_start();
 
 define( "MAX_SEARCH_RESULTS", "5" );
 
-$host = "localhost";
+$host = "best-trip.cb3rxtjzqrat.eu-west-2.rds.amazonaws.com";#"localhost";
 $database = "besttrip";
-$user = "root";
-$password = "";
+$user = "admin";#"root";
+$password = "12345678";
 
 $mysqli = new mysqli( $host, $user, $password, $database );
 $mysqli->set_charset('utf8' );
