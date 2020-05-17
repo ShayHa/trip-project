@@ -13,9 +13,12 @@ $all_messages = getMessages( $_SESSION['user_id'], false );
 ?>
     <div class="messages_box">
         <?php
-        echo sizeof($all_messages);
+        if (sizeof($all_messages) == 0){
+            echo "<span class='check'>"."It seems that you do not have any messages, maybe you should share more!"."</span>";
+        }
+        else {
         ?>
-        <table style="width: 100%;" border="1">
+        <table style="width: 100%;text-align: center;" border="1">
             <tr>
                 <th>#</th>
                 <th>From</th>
@@ -39,6 +42,8 @@ $all_messages = getMessages( $_SESSION['user_id'], false );
             }
             ?>
         </table>
+<!--    This is to close the else for the no messages statement-->
+            <?php }; ?>
     </div>
 <?php
 #This if is to check if he has message, if yes it will color them.

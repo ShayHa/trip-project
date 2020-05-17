@@ -210,9 +210,9 @@ h1, h2, h3, h4, h5 , h6{
     border-radius: 0;
     line-height: 22px;
     background-color: #fbfbfb;
-    padding: 13px 13px 13px 54px;
+    padding: 13px 20px 13px 54px;
     margin-bottom: 10px;
-    width:100%;
+    width:90%;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -231,5 +231,31 @@ h1, h2, h3, h4, h5 , h6{
 
 .center_div{
     margin: 0 auto;
-    width:50% /* value of your choice which suits your alignment */
+    width:16em; /* value of your choice which suits your alignment */
+
+}
+
+#form-div {
+    background-color:rgb(99,116,150);
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+}
+
+input, select {
+    display: inline-block;
+    width: 10em;
+}
+label {
+    display: inline-block;
+    width: 10em;
+    margin-right: .5em;
+    padding-top: 1.5em;
+    text-align:center;
+}
+
+.check{
+    font-weight: bold;
+    font-size: 32px;
+    position: relative;
+    left:7%;
 }

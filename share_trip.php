@@ -41,154 +41,133 @@ if (isset($_REQUEST['share_trip_btn'])) {
 
 include "header.php";
 ?>
-    <form class="center_div" action="share_trip.php" method="post" onsubmit="confirm('Thank you for the share! click ok to share')">
-        <table>
-            <!-- Destination-->
-            <tr>
-                <td><span class="required"> * </span> Destination</td>
-                <td>
-                    <select name="destination_id" required>
-                        <option value="1">Tel Aviv</option>
-                    </select>
-                </td>
-            </tr>
-            <!-- Type-->
-            <tr>
-                <td><span class="required"> * </span> Type</td>
-                <td>
-                    <select name="type_id" required>
-                        <option value="">Type</option>
+    <form class="center_div" id="form-div" action="share_trip.php" method="post" onsubmit="alert('Thank you for the share! click ok to share')">
+        <div style="padding: 35px; margin-left: 25px; color: #fbfbfb">
+        <div>
+        <label for=""><span class="required"> * </span> Destination
+            <select id="" name="destination_id">
+                <option value="1">Tel Aviv </option>
+                </select>
+        </label>
+        </div>
+        <!-- Type-->
+        <div>
+            <label for="SelectOEM"><span class="required"> * </span> Type
+                <select id="" name="type_id" required>
+                    <option value="">Type</option>
+                    <?php
+                    $types = getTableData('trip_types');
+                    foreach ($types as $type) { ?>
+                        <option value="<?php echo $type['id']; ?>"><?php echo $type['type_name']; ?></option>
                         <?php
-                        $types = getTableData('trip_types');
-                        foreach ($types as $type) { ?>
-                            <option value="<?php echo $type['id']; ?>"><?php echo $type['type_name']; ?></option>
-                            <?php
-                        }
-                        ?>
-                    </select>
-                </td>
-            </tr>
-            <!-- Theme-->
-            <tr>
-                <td><span class="required"> * </span> Theme</td>
-                <td>
-                    <select class="" name="theme_id" required>
-                        <option value="">Theme</option>
+                    }
+                    ?>
+                </select>
+            </label>
+        </div>
+        <!-- Theme-->
+        <div>
+            <label for=""><span class="required"> * </span> Theme
+                <select id="" name="theme_id" required>
+                    <option value="">Theme</option>
+                    <?php
+                    $types = getTableData('themes');
+                    foreach ($types as $type) { ?>
+                        <option value="<?php echo $type['id']; ?>"><?php echo $type['theme_name']; ?></option>
                         <?php
-                        $themes = getTableData('themes');
-                        foreach ($themes as $theme) { ?>
-                            <option value="<?php echo $theme['id']; ?>"><?php echo $theme['theme_name']; ?></option>
-                            <?php
-                        }
-                        ?>
-                    </select>
-                </td>
-            </tr>
-            <!-- Season -->
-            <tr>
-                <td><span class="required"> * </span> Season</td>
-                <td>
-                    <select name="season_id" required>
-                        <option value="">Season</option>
+                    }
+                    ?>
+                </select>
+            </label>
+        </div>
+        <!-- Season -->
+        <div>
+            <label for=""><span class="required"> * </span> Season
+                <select id="" name="season_id" required>
+                    <option value="">Season</option>
+                    <?php
+                    $types = getTableData('seasons');
+                    foreach ($types as $type) { ?>
+                        <option value="<?php echo $type['id']; ?>"><?php echo $type['season_name']; ?></option>
                         <?php
-                        $seasons = getTableData('seasons');
-                        foreach ($seasons as $season) { ?>
-                            <option value="<?php echo $season['id']; ?>"><?php echo $season['season_name']; ?></option>
-                            <?php
-                        }
-                        ?>
-                    </select>
-                </td>
-            </tr>
-            <!-- Price -->
-            <tr>
-                <td><span class="required"> * </span> Price</td>
-                <td>
-                    <select name="price_id" required>
-                        <option value="">Price</option>
+                    }
+                    ?>
+                </select>
+            </label>
+        </div>
+        <!-- Price -->
+        <div>
+            <label for=""><span class="required"> * </span> Price
+                <select id="" name="price_id" required>
+                    <option value="">Price</option>
+                    <?php
+                    $types = getTableData('prices');
+                    foreach ($types as $type) { ?>
+                        <option value="<?php echo $type['id']; ?>"><?php echo $type['price_name']; ?></option>
                         <?php
-                        $prices = getTableData('prices');
-                        foreach ($prices as $price) { ?>
-                            <option value="<?php echo $price['id']; ?>"><?php echo $price['price_name']; ?></option>
-                            <?php
-                        }
-                        ?>
-                    </select>
-                </td>
-            </tr>
-            <!-- Age Need to fix this-->
-            <tr>
-                <td><span class="required"> * </span> Age</td>
-                <td>
-                    <select name="age_range_id" required>
-                        <option value="">Age</option>
+                    }
+                    ?>
+                </select>
+            </label>
+        </div>
+        <!-- Age -->
+        <div>
+            <label for=""><span class="required"> * </span> Age
+                <select id="" name="age_range_id" required>
+                    <option value="">Age</option>
+                    <?php
+                    $types = getTableData('age_range');
+                    foreach ($types as $type) { ?>
+                        <option value="<?php echo $type['id']; ?>"><?php echo $type['range_str']; ?></option>
                         <?php
-                        $age_ranges = getTableData('age_range');
-                        foreach ($age_ranges as $range) { ?>
-                            <option value="<?php echo $range['id']; ?>"><?php echo $range['range_str']; ?></option>
-                            <?php
-                        }
-                        ?>
-                    </select>
-                </td>
-            </tr>
-            <!-- Story-->
-            <tr>
-                <td>Story</td>
-                <td>
-                    <textarea name="trip_story" cols="30" rows="10"></textarea>
-                </td>
-            </tr>
-            <!-- Attractions-->
-            <tr>
-                <td>Recommended <br>
-                    Attractions
-                </td>
-                <td>
-                    <textarea name="recommended_attractions" cols="30" rows="10"></textarea>
-                </td>
-            </tr>
-            <!-- Eat-->
-            <tr>
-                <td>Something <br>
-                    To <br>
-                    Eat
-                </td>
-                <td>
-                    <textarea name="places_to_eat" cols="30" rows="10"></textarea>
-                </td>
-            </tr>
-            <!-- Hotels-->
-            <tr>
-                <td>
-                    Hotels
-                </td>
-                <td>
-                    <textarea name="hotels" cols="30" rows="10"></textarea>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Good to know
-                </td>
-                <td>
-                    <textarea name="good_to_know" cols="30" rows="10"></textarea>
-                </td>
-            </tr>
-            <tr>
-                <td>
+                    }
+                    ?>
+                </select>
+            </label>
+        </div>
+        </div>
+        <!-- Story -->
+        <div style="padding: 30px; margin-left: 25px">
+        <div>
 
-                </td>
-                <td>
-                    <textarea class="feedback-input" id="comment" name="thing_to_give_up" cols="30" rows="10" placeholder="Thing to give up"></textarea>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <input type="submit" name="share_trip_btn" value="SHARE">
-                </td>
-            </tr>
-        </table>
+            <textarea class="feedback-input" id="comment" name="trip_story" cols="40" rows="10"
+                      placeholder="Tell us about your trip story"></textarea>
+        </div>
+        <!-- Attractions -->
+        <div>
+
+            <textarea class="feedback-input" id="comment" name="recommended_attractions" cols="40" rows="10"
+                      placeholder="Tell us about your trip recommended attractions"></textarea>
+        </div>
+        <!-- Eat -->
+        <div>
+
+            <textarea class="feedback-input" id="comment" name="places_to_eat" cols="40" rows="10"
+                      placeholder="Tell us about your trip most delicious food"></textarea>
+        </div>
+        <!-- Hotels -->
+        <div>
+
+            <textarea class="feedback-input" id="comment" name="hotels" cols="40" rows="10"
+                      placeholder="Tell us about your hotels"></textarea>
+        </div>
+        <!-- Good to know -->
+        <div>
+
+            <textarea class="feedback-input" id="comment" name="good_to_know" cols="40" rows="10"
+                      placeholder="Tell us about your good to know stuff"></textarea>
+        </div>
+        <!-- Give up -->
+        <div>
+
+            <textarea class="feedback-input" id="comment" name="thing_to_give_up" cols="40" rows="10"
+                      placeholder="Tell us about your give up stuff"></textarea>
+        </div>
+        </div>
+        <div class="">
+        <input class="btn btn-primary btn-block" type="submit" name="share_trip_btn" value="SHARE">
+        </div>
     </form>
 <?php
 include "footer.php";
+
