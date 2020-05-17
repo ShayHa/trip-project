@@ -154,9 +154,9 @@ if( isset( $_REQUEST['search_button']) ) {
             </div>
         </div>
         <div id="weights_section">
-            <div id ='wrapper'>
+            <div id ='wrapper'style="display: none">
                 <div id='left'><a href="#" id="change_weights" onclick="changeWeight()">Change Weights</a></div>
-                <div id="right" style="display: none"> Don't like the results? You can change the weights</div>
+                <div id="right" > Don't like the results? You can change the weights</div>
             </div>
 
             <div id="weights">

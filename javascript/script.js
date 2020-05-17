@@ -34,9 +34,9 @@ function updateTotalWeight( input ) {
 
 function showComment() {
 
-    if( document.getElementById('right').style.display === "none" &
+    if( document.getElementById('wrapper').style.display === "none" &
             document.getElementById('search_results') != null) {
-        document.getElementById('right').style.display = "block";
+        document.getElementById('wrapper').style.display = "block";
     } else {
         // alert('else');
     }
