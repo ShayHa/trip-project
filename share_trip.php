@@ -165,7 +165,7 @@ include "header.php";
         </div>
         </div>
         <div class="">
-        <input class="btn btn-primary btn-block" type="submit" name="share_trip_btn" value="SHARE">
+        <input class="btn btn-block btn-color" type="submit" name="share_trip_btn" value="SHARE">
         </div>
     </form>
 <?php

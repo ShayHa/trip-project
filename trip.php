@@ -195,7 +195,7 @@ include "header.php";
                             <tr>
                                 <td>Your message</td>
                                 <td>
-                                    <textarea name="message" cols="30" rows="10"></textarea>
+                                    <textarea name="message" cols="30" rows="10" maxlength="70"></textarea>
                                 </td>
                             </tr>
                             <tr>

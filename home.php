@@ -192,7 +192,7 @@ if( isset( $_REQUEST['search_button']) ) {
     if( isset( $trips ) && sizeof( $trips ) > 0 && !$validation_error ) { ?>
         <table style="width: 100%;" id="search_results">
 
-            <tr style="height: 50px;">
+            <tr style="height: 50px; text-align: center">
                 <th style="width: 15%">User</th>
                 <th style="width: 70%;">Data</th>
                 <th style="width: 15%;">Matching Score</th>
@@ -200,11 +200,12 @@ if( isset( $_REQUEST['search_button']) ) {
             <?php
             //$counter = 1;
             foreach ( $trips as $trip ) {
+                $name = getUserName($trip['id']);
                 if ( $counter != 0 ) {
                     ?>
                     <tr>
                         <td>
-                            <img src="images/<?php echo $trip['user_image'];?>" alt="">
+                            <img src="images/<?php echo $trip['user_image'];?> " alt=""><?php echo $name[0]['name']; ?>
                         </td>
                         <td style="font-size: 18px;">
                             <p>

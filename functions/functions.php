@@ -209,3 +209,13 @@ function getUserTrips($user_id){
     $result = $mysqli->query( $sql );
     return $result->fetch_all( MYSQLI_ASSOC ); // [0 => ''] ['user_id' ]
 }
+
+function getUserName($trip_id){
+    global $mysqli;
+    $sql = "select CONCAT(u.first_name, \" \", u.last_name) as \"name\"
+            from users u INNER JOIN trips t on u.id = t.user_id
+            where t.id = $trip_id";
+
+    $result = $mysqli->query( $sql );
+    return $result->fetch_all( MYSQLI_ASSOC );
+}

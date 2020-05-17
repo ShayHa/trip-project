@@ -163,7 +163,7 @@ h1, h2, h3, h4, h5 , h6{
     padding: 5px;
 }
 .opened{
-    background-color: gray;
+    background-color: #fbfbfb;
 }
 .not_opened{
     background-color: #dd2222;
@@ -258,4 +258,8 @@ label {
     font-size: 32px;
     position: relative;
     left:7%;
+}
+
+.btn-color {
+    background-color: rgb(198,243,240);
 }
