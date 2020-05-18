@@ -2,7 +2,18 @@
 include "functions/functions.php";
 
 $sent_msg = null;
-if( isLogin() ) {
+/* Initialize default trip id then take the id from the previous page and find
+    the data. After that I get the trip data then check if the user is logged in
+    then check if is is the same user before the send message
+*/
+$trip_id = 1;
+if( isset( $_REQUEST['trip_id']) ) {
+    $trip_id = $_REQUEST['trip_id'];
+}
+$trip = getTripById($trip_id);
+
+if( isLogin()  )  {
+
     if (isset($_REQUEST['send_message'])) {
         insertMessage($_REQUEST['message'], $_SESSION['user_id'], $_REQUEST['to_user_id'] );
         $sent_msg = "a";
@@ -10,14 +21,18 @@ if( isLogin() ) {
 }
 
 //
-$trip_id = 1;
-if( isset( $_REQUEST['trip_id']) ) {
-    $trip_id = $_REQUEST['trip_id'];
-}
-$trip = getTripById($trip_id);
+
+
+
 $points = getPoints($trip_id);
 
 include "header.php";
+
+//if ( $trip['user_id'] == $_SESSION['user_id'] & true){
+//    echo print_r($trip);
+//}
+#echo $trip['user_id'];
+//echo $_SESSION['user_id'];
 #echo print_r($points);
 ?>
 <div>
@@ -185,7 +200,7 @@ include "header.php";
             </td>
         </tr>
         <?php
-        if( isLogin() ) {
+        if( isLogin() and ($trip['user_id'] != $_SESSION['user_id'] )) {
             ?>
             <tr>
                 <td><strong> Send message</strong> </td>

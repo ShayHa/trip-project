@@ -139,7 +139,7 @@ function setMessagesStatus( $from_user_id, $to_user_id ) {
     global $mysqli;
     $update = "UPDATE `messages` SET `is_opened`=1 WHERE `from_user_id`=$from_user_id AND `to_user_id`=$to_user_id AND `is_opened`=0";
     $mysqli->query( $update );
-    echo "in";
+
 }
 
 function getTripById( $trip_id ){
