@@ -9,7 +9,6 @@ if( !isLogin()) {
 
 include "header.php";
 $all_messages = getMessages( $_SESSION['user_id'], false );
-
 ?>
     <div class="messages_box">
         <?php
@@ -30,6 +29,7 @@ $all_messages = getMessages( $_SESSION['user_id'], false );
             $counter = 1;
             foreach ( $all_messages as $message ) {
                 $from_user = getUserById( $message['from_user_id'] );
+                setMessagesStatus($from_user['id'], $_SESSION['user_id'] );
                 ?>
                 <tr class="<?php if( $message['is_opened'] == 0 ) { echo "message_row not_opened";} else { echo "message_row opened"; } ?>">
                     <td><?php echo $counter++; ?></td>
@@ -47,8 +47,9 @@ $all_messages = getMessages( $_SESSION['user_id'], false );
     </div>
 <?php
 #This if is to check if he has message, if yes it will color them.
-if (sizeof($all_messages) !=0){
-    setMessagesStatus($from_user['id'], $_SESSION['user_id'] );
-}
+//if (sizeof($all_messages) !=0){
+//    echo "hi";
+//    setMessagesStatus($from_user['id'], $_SESSION['user_id'] );
+//}
 
 include "footer.php";

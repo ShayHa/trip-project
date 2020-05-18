@@ -188,19 +188,20 @@ include "header.php";
         if( isLogin() ) {
             ?>
             <tr>
-                <td>Send message</td>
+                <td><strong> Send message</strong> </td>
                 <td>
                     <form action="trip.php?trip_id=<?php echo $trip_id;?>" method="post">
                         <table>
                             <tr>
-                                <td>Your message</td>
+                                <td><strong> Your message</strong></td>
                                 <td>
-                                    <textarea name="message" cols="30" rows="10" maxlength="70"></textarea>
+                                    <textarea class="feedback-input comment"  name="message"
+                                              cols="40" rows="3" maxlength="70" placeholder="Type your question here"></textarea>
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2">
-                                    <input type="submit" name="send_message" value="SEND">
+                                <td colspan="2" style="position:relative;bottom:9px; left:200px">
+                                    <input class="btn btn-primary" style="background-color:rgb(198,243,240); color: #3c3c3c" type="submit" name="send_message" value="SEND">
                                     <input type="hidden" name="to_user_id" value="<?php echo $trip['user_id']?>">
                                 </td>
                             </tr>

@@ -130,37 +130,37 @@ include "header.php";
         <div style="padding: 30px; margin-left: 25px">
         <div>
 
-            <textarea class="feedback-input" id="comment" name="trip_story" cols="40" rows="10"
+            <textarea class="feedback-input comment" name="trip_story" cols="40" rows="10"
                       placeholder="Tell us about your trip story"></textarea>
         </div>
         <!-- Attractions -->
         <div>
 
-            <textarea class="feedback-input" id="comment" name="recommended_attractions" cols="40" rows="10"
+            <textarea class="feedback-input comment" name="recommended_attractions" cols="40" rows="10"
                       placeholder="Tell us about your trip recommended attractions"></textarea>
         </div>
         <!-- Eat -->
         <div>
 
-            <textarea class="feedback-input" id="comment" name="places_to_eat" cols="40" rows="10"
+            <textarea class="feedback-input comment" name="places_to_eat" cols="40" rows="10"
                       placeholder="Tell us about your trip most delicious food"></textarea>
         </div>
         <!-- Hotels -->
         <div>
 
-            <textarea class="feedback-input" id="comment" name="hotels" cols="40" rows="10"
+            <textarea class="feedback-input comment" name="hotels" cols="40" rows="10"
                       placeholder="Tell us about your hotels"></textarea>
         </div>
         <!-- Good to know -->
         <div>
 
-            <textarea class="feedback-input" id="comment" name="good_to_know" cols="40" rows="10"
+            <textarea class="feedback-input comment"  name="good_to_know" cols="40" rows="10"
                       placeholder="Tell us about your good to know stuff"></textarea>
         </div>
         <!-- Give up -->
         <div>
 
-            <textarea class="feedback-input" id="comment" name="thing_to_give_up" cols="40" rows="10"
+            <textarea class="feedback-input comment" name="thing_to_give_up" cols="40" rows="10"
                       placeholder="Tell us about your give up stuff"></textarea>
         </div>
         </div>
