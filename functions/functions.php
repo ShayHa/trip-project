@@ -102,9 +102,6 @@ function getSearchStats( $search_type ) { // $search_type => type_id, theme_id, 
 //     echo $sql;
 
 
-
-
-
     $result = $mysqli->query( $sql );
     return $result->fetch_all( MYSQLI_ASSOC );
 }
@@ -219,4 +216,30 @@ function getUserName($trip_id){
 
     $result = $mysqli->query( $sql );
     return $result->fetch_all( MYSQLI_ASSOC );
+}
+
+function getResultForSeason($join_on, $field_name,$history_col,$table_name) { // $search_type => type_id, theme_id, season_id....
+    global $mysqli;
+
+    $sql = "select `$field_name`, COALESCE(count(search_history.$history_col),0) AS `count`
+            from `$table_name` left join search_history on $join_on = search_history.$history_col group by `$field_name`";
+
+//    echo $sql;
+    $result = $mysqli->query( $sql );
+    return $result->fetch_all( MYSQLI_ASSOC );
+}
+
+
+function getResultForMonthlyRegistered(){
+    global $mysqli;
+
+    $sql = "SELECT DATE_FORMAT(u.register_date, '%M') as \"month\",
+                    EXTRACT(YEAR from u.register_date) as \"year\" ,
+                     count(*) as \"registered users\" 
+            FROM users u 
+            group by month, year 
+            HAVING year = 2020";
+
+    $result = $mysqli->query($sql);
+    return $result->fetch_all(MYSQLI_ASSOC);
 }

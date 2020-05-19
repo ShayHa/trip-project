@@ -1,11 +1,12 @@
-<!--<!DOCTYPE html>-->
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-<!--        <script src="javascript/canvasjs.min.js"></script>-->
+
         <title>BestT(r)ip</title>
+
         <link rel="stylesheet" href="style/app.css">
     </head>
     <body>
@@ -40,7 +41,7 @@
                     <li><a href="share_trip.php"> Share Your T(r)ip </a></li>
                     <?php
                     if( isLogin() && $_SESSION['is_admin'] == 1 ) { ?>
-                        <li><a href="try2.php"> Reports </a></li>
+                        <li><a href="try3.php"> Reports </a></li>
 
                     <?php
                     }
