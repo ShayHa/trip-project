@@ -143,8 +143,8 @@ chart1.render();
 
 
 
-<div class="card boxlayout">
-<div>
+
+<div class="container">
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
     <form method="post">
         <select class="btn" name="search_type" id="search_type">
@@ -159,12 +159,12 @@ chart1.render();
 </div>
 
 <div class="container">
-    <div class="row margin: 20px 10px">
-        <div class="col-sm-6 " id="chartContainerPie" style="height: 370px; width: 100%;"></div>
-        <div class="col-sm-6" id="chartContainerLine" style="height: 370px; width: 100%;"></div>
+    <div class="row">
+        <div class="col-sm-6" id="chartContainerPie" style="height: 370px;padding: 0px 10px 0 0;"></div>
+        <div class="col-sm-6" id="chartContainerLine" style="height: 370px; padding: 0px 0px 0 10px;"></div>
     </div>
 </div>
-</div>
+
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
 
