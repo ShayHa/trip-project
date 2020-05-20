@@ -3,6 +3,7 @@ include "functions/functions.php";
 $is_signup = false;
 
 if (isset($_REQUEST['signup-btn'])) {
+    echo "in if";
     $email = $_REQUEST['email'];
     $password = $_REQUEST['password'];
     $first_name = $_REQUEST['first_name'];
@@ -14,7 +15,7 @@ include "header.php";
 ?>
     <link rel="stylesheet" href="style/sign_in_style.css">
 <div class="login-clean">
-    <form action="signin.php" method="post">
+    <form action="signup.php" method="post">
         <h2 class="sr-only">Sign up Form</h2>
         <!--             <div class="illustration"><i class="icon ion-ios-navigate"></i></div>-->
         <strong style="padding-left: 70px;"> Register: </strong>
@@ -38,16 +39,16 @@ include "header.php";
 
 <!--    <form action="signup.php" method="post">-->
 <!--        <table>-->
-<!--            --><?php
-//            if ($is_signup == true) { ?>
-<!--                <tr>-->
-<!--                    <td colspan="2">Sign up successfully. Please-->
-<!--                        <a href="signin.php">sign in.</a>-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--                --><?php
-//            }
-//            ?>
+            <?php
+            if ($is_signup == true) { ?>
+                <tr>
+                    <td colspan="2">Sign up successfully. Please
+                        <a href="signin.php">sign in.</a>
+                    </td>
+                </tr>
+                <?php
+            }
+            ?>
 <!--            <tr>-->
 <!--                <td>Email</td>-->
 <!--                <td><input type="email" name="email" placeholder="Enter your email address" required></td>-->
