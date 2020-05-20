@@ -18,6 +18,17 @@ function signup( $email, $password, $first_name, $last_name ) {
     $mysqli->query( $insert );
 }
 
+function checkIfExsits($email){
+    global $mysqli;
+    $sql = "SELECT * FROM users WHERE `email`='$email'";
+    $results = $mysqli->query( $sql );
+    if ($results->num_rows !=0){
+        return true;
+    } else{
+        return false;
+    }
+}
+
 function signin( $email, $password ) {
     global $mysqli;
     $password = md5( $password );

@@ -3,13 +3,20 @@ include "functions/functions.php";
 $is_signup = false;
 
 if (isset($_REQUEST['signup-btn'])) {
-    echo "in if";
+
     $email = $_REQUEST['email'];
     $password = $_REQUEST['password'];
     $first_name = $_REQUEST['first_name'];
     $last_name = $_REQUEST['last_name'];
-    signup($email, $password, $first_name, $last_name);
-    $is_signup = true;
+
+    if (checkIfExsits($email)){
+        $is_signup = false;
+    }
+    else{
+        signup($email, $password, $first_name, $last_name);
+        $is_signup = true;
+    };
+
 }
 include "header.php";
 ?>
@@ -34,21 +41,28 @@ include "header.php";
         <div class="form-group">
             <button class="btn btn-primary btn-block" type="submit" name="signup-btn" value="SIGN UP">Sign UP</button>
         </div>
+        <div class="form-group" style="padding-left: 15%;">
+            <?php
+            if ($is_signup == true) { ?>
+                <strong style="text-align: center">
+                    Sign up successfully.
+                    <br><span >Please <a  href="signin.php">sign in.</a></span>
+                </strong>
+                <?php
+            } else { ?>
+                <strong style="text-align: center; color: #dd2222; font-size: 15px">
+                    This Email is already in use,<br>
+                    Please use another one.
+                </strong>
+           <?php }
+            ?>
+        </div>
         <!--            <a href="#" class="forgot">Forgot your email or password?</a>-->
     </form>
 
 <!--    <form action="signup.php" method="post">-->
 <!--        <table>-->
-            <?php
-            if ($is_signup == true) { ?>
-                <tr>
-                    <td colspan="2">Sign up successfully. Please
-                        <a href="signin.php">sign in.</a>
-                    </td>
-                </tr>
-                <?php
-            }
-            ?>
+
 <!--            <tr>-->
 <!--                <td>Email</td>-->
 <!--                <td><input type="email" name="email" placeholder="Enter your email address" required></td>-->

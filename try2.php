@@ -2,6 +2,12 @@
 include "functions/functions.php";
 include "header.php";
 
+if( !isLogin() or !$_SESSION['is_admin']) {
+    echo '<script language="javascript"> alert("message successfully sent") </script>';
+    header('location:home.php');
+    exit;
+}
+
 ?>
 
 <?php
