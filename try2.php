@@ -56,6 +56,32 @@ foreach($pie_date as $row){
 
 ?>
 
+<?php
+$line_data = getTripsAdded();
+$points_date = array();
+
+foreach ($line_data as $row){
+    //$date = date_create("".$row['year']."-".$row['month']."-01");
+    $date = "new Date(".$row['year'].",".$row['month'].",01)";
+    array_push($points_date,array("x"=>$date,"y"=>$row['count']));
+    //array_push($points_date,array("x"=>date_format($date,"Y/m/d"), "y"=>$row['count']));
+}
+//echo print_r($points_date);
+$counter = 1;
+$s = "[";
+foreach($points_date as $point){
+
+    if (sizeof($points_date) == $counter){
+        $s = $s."{ x: ".$point['x'].", y: ".$point['y']." }]";
+        break;
+    }
+    else{
+        $s = $s."{ x: ".$point['x'].", y: ".$point['y']." },";
+    }
+    $counter++;
+}
+//echo $s;
+?>
 
 <!--    Script for parameter chart-->
 <!--    Used this guide to make it:-->
@@ -113,61 +139,97 @@ var chart1 = new CanvasJS.Chart("chartContainerPie", {
     }]
 });
 chart1.render();
-
+    // https://canvasjs.com/docs/charts/chart-types/html5-step-line-chart/
     var chart2 = new CanvasJS.Chart("chartContainerLine", {
-        zoomEnabled: true,
         animationEnabled: true,
+        zoomEnabled: true,
         theme: "light2",
         title:{
-            text: "Simple Line Chart"
+            text: "Site Users"
         },
-        axisY:{
-            includeZero: false
+        axisX:{
+            //valueFormatString: "DD MMM",
+            crosshair: {
+                enabled: true,
+                snapToDataPoint: true
+            }
+        },
+        axisY: {
+            title: "Number of Users",
+            crosshair: {
+                enabled: true
+            }
+        },
+        toolTip:{
+            shared:true
+        },
+        legend:{
+            cursor:"pointer",
+            verticalAlign: "bottom",
+            horizontalAlign: "left",
+            dockInsidePlotArea: true,
+            itemclick: toogleDataSeries
         },
         data: [{
             type: "line",
-            indexLabelFontSize: 16,
-            dataPoints: [
-                { y: 450 },
-                { y: 414},
-                { y: 520, indexLabel: "\u2191 highest",markerColor: "red", markerType: "triangle" },
-                { y: 460 },
-                { y: 450 },
-                { y: 500 },
-                { y: 480 },
-                { y: 480 },
-                { y: 410 , indexLabel: "\u2193 lowest",markerColor: "DarkSlateGrey", markerType: "cross" },
-                { y: 500 },
-                { y: 480 },
-                { y: 510 }
-            ]
+            showInLegend: true,
+            name: "Total Users",
+            markerType: "square",
+            //xValueFormatString: "DD MMM, YYYY",
+            color: "#F08080",
+            dataPoints: <?php echo $s; ?>
+            //     [
+            //     { x: new Date(2017, 0, 3), y: 650 },
+            //     { x: new Date(2017, 0, 4), y: 700 },
+            //     { x: new Date(2017, 0, 5), y: 710 },
+            //     { x: new Date(2017, 0, 6), y: 658 },
+            //     { x: new Date(2017, 0, 7), y: 734 },
+            //     { x: new Date(2017, 0, 8), y: 963 },
+            //     { x: new Date(2017, 0, 9), y: 847 },
+            //     { x: new Date(2017, 0, 10), y: 853 },
+            //     { x: new Date(2017, 0, 11), y: 869 },
+            //     { x: new Date(2017, 0, 12), y: 943 },
+            //     { x: new Date(2017, 0, 13), y: 970 },
+            //     { x: new Date(2017, 0, 14), y: 869 },
+            //     { x: new Date(2017, 0, 15), y: 890 },
+            //     { x: new Date(2017, 0, 16), y: 930 }
+            // ]
         }]
     });
     chart2.render();
+
+    function toogleDataSeries(e){
+        if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+            e.dataSeries.visible = false;
+        } else{
+            e.dataSeries.visible = true;
+        }
+        chart2.render();
+    }
 }
 </script>
 
 
 
 
-<div class="container">
-    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<div class="container" style="padding: 0px 0px 0 0;">
+    <div id="chartContainer" style="height: 350px; width: 100%;"></div>
     <form method="post">
-        <select class="btn" name="search_type" id="search_type">
+        <select class="btn" name="search_type" id="search_type" style="height:50px;  margin-top: 10px;">
             <option value="type_id">Type</option>
             <option value="theme_id">Theme</option>
             <option value="season_id">Season</option>
             <option value="price_id">Price</option>
             <option value="age_range_id">Age range</option>
         </select>
-        <input class="btn btn-primary" type="submit" name="display_chart" value="Change Parameter">
+        <input class="btn btn-primary" type="submit" name="display_chart" value="Change Parameter"
+               style="margin:10px 0px 0 7px;height:50px;">
     </form>
 </div>
-
-<div class="container">
+<div class="container" style="margin-top:0px">
     <div class="row">
-        <div class="col-sm-6" id="chartContainerPie" style="height: 370px;padding: 0px 10px 0 0;"></div>
-        <div class="col-sm-6" id="chartContainerLine" style="height: 370px; padding: 0px 0px 0 10px;"></div>
+        <div class="col-sm-6" id="chartContainerPie" style="height: 370px; width: 85%;padding: 0px 10px 0 0;"></div>
+        <div class="col-sm-6" id="chartContainerLine" style="height: 370px;width: 85%;"></div>
     </div>
 </div>
 

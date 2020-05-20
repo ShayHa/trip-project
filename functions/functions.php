@@ -254,3 +254,17 @@ function getResultForMonthlyRegistered(){
     $result = $mysqli->query($sql);
     return $result->fetch_all(MYSQLI_ASSOC);
 }
+
+function getTripsAdded(){
+    global $mysqli;
+
+    $sql = "SELECT EXTRACT(MONTH from t.date_added) as \"month\",
+                    EXTRACT(YEAR from t.date_added) as \"year\" ,
+                     count(*) as \"count\" 
+            FROM trips t 
+            group by month, year 
+            HAVING year = 2020";
+
+    $result = $mysqli->query($sql);
+    return $result->fetch_all(MYSQLI_ASSOC);
+}

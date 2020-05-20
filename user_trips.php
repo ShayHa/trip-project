@@ -14,12 +14,12 @@ $all_trips = getUserTrips( $_SESSION['user_id'] );
     <div class="trip_box">
         <?php
         ?>
-        <table style="width: 100%;" border="1">
+        <table class="table table-hover" style="width: 100%;">
             <tr>
-                <th>#</th>
-                <th>Trip ID</th>
-                <th>Trip Story</th>
-                <th>Date Added</th>
+                <th scope="col">Trip Number</th>
+                <th scope="col">Trip ID</th>
+                <th scope="col">Trip Story</th>
+                <th scope="col">Date Added</th>
             </tr>
             <?php
             $counter = 1;
