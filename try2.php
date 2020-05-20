@@ -62,11 +62,13 @@ $points_date = array();
 
 foreach ($line_data as $row){
     //$date = date_create("".$row['year']."-".$row['month']."-01");
-    $date = "new Date(".$row['year'].",".$row['month'].",01)";
+    $month = $row['month']-1;
+    $date = "new Date(".$row['year'].",".$month.",01)";
     array_push($points_date,array("x"=>$date,"y"=>$row['count']));
     //array_push($points_date,array("x"=>date_format($date,"Y/m/d"), "y"=>$row['count']));
 }
 //echo print_r($points_date);
+//echo json_encode($points_date, JSON_NUMERIC_CHECK);
 $counter = 1;
 $s = "[";
 foreach($points_date as $point){
@@ -212,7 +214,7 @@ chart1.render();
 
 
 
-<div class="container" style="padding: 0px 0px 0 0;">
+<div class="container" style="padding: 2px">
     <div id="chartContainer" style="height: 350px; width: 100%;"></div>
     <form method="post">
         <select class="btn" name="search_type" id="search_type" style="height:50px;  margin-top: 10px;">
