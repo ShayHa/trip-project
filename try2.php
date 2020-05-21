@@ -180,22 +180,6 @@ chart1.render();
             //xValueFormatString: "DD MMM, YYYY",
             color: "#F08080",
             dataPoints: <?php echo $s; ?>
-            //     [
-            //     { x: new Date(2017, 0, 3), y: 650 },
-            //     { x: new Date(2017, 0, 4), y: 700 },
-            //     { x: new Date(2017, 0, 5), y: 710 },
-            //     { x: new Date(2017, 0, 6), y: 658 },
-            //     { x: new Date(2017, 0, 7), y: 734 },
-            //     { x: new Date(2017, 0, 8), y: 963 },
-            //     { x: new Date(2017, 0, 9), y: 847 },
-            //     { x: new Date(2017, 0, 10), y: 853 },
-            //     { x: new Date(2017, 0, 11), y: 869 },
-            //     { x: new Date(2017, 0, 12), y: 943 },
-            //     { x: new Date(2017, 0, 13), y: 970 },
-            //     { x: new Date(2017, 0, 14), y: 869 },
-            //     { x: new Date(2017, 0, 15), y: 890 },
-            //     { x: new Date(2017, 0, 16), y: 930 }
-            // ]
         }]
     });
     chart2.render();
