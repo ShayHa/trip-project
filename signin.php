@@ -1,6 +1,6 @@
 <?php
 include "functions/functions.php";
-
+$flag = false;
 if( isset( $_REQUEST['signin-btn']) ) {
     $email = $_REQUEST['email'];
     $password = $_REQUEST['password'];
@@ -8,7 +8,7 @@ if( isset( $_REQUEST['signin-btn']) ) {
         header('location:home.php');
         exit;
     } else {
-
+        $flag = true;
     }
 }
 include "header.php";
@@ -30,6 +30,19 @@ include "header.php";
             </div>
             <div class="form-group">
                 <button class="btn btn-primary btn-block" type="submit" name="signin-btn" value="SIGN IN">Sign In</button>
+            </div>
+            <div style="padding-left: 15%;">
+                <?php
+                if ($flag) { ?>
+                    <strong style="text-align: center; color: #dd2222; font-size: 15px; padding-right: 10%;">
+                        Sign in failed.
+                        <br><span style="">Please use valid Email and Password</span>
+                    </strong>
+                    <?php
+                } else { ?>
+
+                <?php }
+                ?>
             </div>
 <!--            <a href="#" class="forgot">Forgot your email or password?</a>-->
         </form>
