@@ -147,7 +147,7 @@ chart1.render();
         zoomEnabled: true,
         theme: "light2",
         title:{
-            text: "Site Users"
+            text: "Site Trips"
         },
         axisX:{
             //valueFormatString: "DD MMM",
@@ -157,7 +157,7 @@ chart1.render();
             }
         },
         axisY: {
-            title: "Number of Users",
+            title: "Number of Trips",
             crosshair: {
                 enabled: true
             }
@@ -175,7 +175,7 @@ chart1.render();
         data: [{
             type: "line",
             showInLegend: true,
-            name: "Total Users",
+            name: "Total Trips",
             markerType: "square",
             //xValueFormatString: "DD MMM, YYYY",
             color: "#F08080",
