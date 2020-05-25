@@ -233,8 +233,6 @@ if( isset( $_REQUEST['search_button']) ) {
     <?php
     }
     ?>
-
-
 <?php
 include "footer.php";
 ?>
