@@ -2,11 +2,12 @@
 session_start();
 
 define( "MAX_SEARCH_RESULTS", "5" );
-
-$host = "best-trip.cb3rxtjzqrat.eu-west-2.rds.amazonaws.com";#"localhost";
-$database = "besttrip";
-$user = "admin";#"root";
-$password = "12345678";
+$configs = include("../config.php");
+echo print_r($configs);
+$host = $configs['host'];
+$database = $configs['database'];
+$user = $configs['user'];
+$password = $configs['password'];
 
 $mysqli = new mysqli( $host, $user, $password, $database );
 $mysqli->set_charset('utf8' );
