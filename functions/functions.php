@@ -3,7 +3,6 @@ session_start();
 
 define( "MAX_SEARCH_RESULTS", "5" );
 $configs = include("../config.php");
-echo print_r($configs);
 $host = $configs['host'];
 $database = $configs['database'];
 $user = $configs['user'];
