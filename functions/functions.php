@@ -119,6 +119,11 @@ function getSearchStats( $search_type ) { // $search_type => type_id, theme_id, 
 
 
 function insertSearchTrip( $search_id, $trip_id, $score ) {
+    /*
+     * @param: search_id:
+     *
+     *
+     * */
     global $mysqli;
     $insert = "INSERT INTO `search_history_trips` (`search_id`, `trip_id`, `score`) VALUES ( $search_id, $trip_id, $score )";
     $mysqli->query( $insert );
