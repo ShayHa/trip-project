@@ -1,6 +1,7 @@
 <?php
 include "functions/functions.php";
 $is_signup = false;
+$flag = false;
 
 if (isset($_REQUEST['signup-btn'])) {
 
@@ -10,7 +11,7 @@ if (isset($_REQUEST['signup-btn'])) {
     $last_name = $_REQUEST['last_name'];
 
     if (checkIfExsits($email)){
-        $is_signup = false;
+        $flag = true;
     }
     else{
         signup($email, $password, $first_name, $last_name);
@@ -49,12 +50,13 @@ include "header.php";
                     <br><span >Please <a  href="signin.php">sign in.</a></span>
                 </strong>
                 <?php
-            } else { ?>
+            } else {
+                if($flag){?>
                 <strong style="text-align: center; color: #dd2222; font-size: 15px">
                     This Email is already in use,<br>
                     Please use another one.
                 </strong>
-           <?php }
+           <?php }}
             ?>
         </div>
         <!--            <a href="#" class="forgot">Forgot your email or password?</a>-->
