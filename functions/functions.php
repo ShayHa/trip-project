@@ -26,6 +26,7 @@ $mysqli->set_charset('utf8' );
 function signup( $email, $password, $first_name, $last_name ) {
     /*
      * Function to insert a new user to the database
+     * The function will encrypt the users' password so we will not keep his original password.
      * */
     global $mysqli;
     $password = md5( $password );
@@ -50,13 +51,15 @@ function checkIfExsits($email){
 
 function signin( $email, $password ) {
     /*
-     * Function to insert a new user to the database
+     * Function to check if a user is already exists on
+     * our DB by checking the email and password.
      * */
     global $mysqli;
     $password = md5( $password );
     $select = "SELECT * FROM users WHERE `email`='$email' AND `password`='$password'";
     $results = $mysqli->query( $select );
     if( $results->num_rows === 1 ) {
+        // Set session params to be used later to show more things for admins and so on
         $user = $results->fetch_assoc();
         $_SESSION['is_login'] = true;
         $_SESSION['user_id'] = $user['id'];
@@ -69,6 +72,10 @@ function signin( $email, $password ) {
 }
 
 function isLogin() {
+    /*
+     * Function to check if a user is logged in or not
+     * Used for various options such as letting him to share a trip and so on.
+     * */
     if( !empty( $_SESSION['is_login'] ) && $_SESSION['is_login'] == true ) {
         return true;
     } else {
@@ -77,6 +84,10 @@ function isLogin() {
 }
 
 function getUserById( $user_id ) {
+    /*
+     * Function to get specific user data
+     * Mainly used for messages to get the "from_user" details.
+     * */
     global $mysqli;
     $select = "SELECT * FROM `users` WHERE `id`=$user_id";
     $results = $mysqli->query( $select );
@@ -90,19 +101,27 @@ function getUserById( $user_id ) {
 
 
 function getTableData( $table_name ) {
+    /*
+     * Function to get full table data.
+     * Mainly used for home page for the select values
+     * */
     global $mysqli;
     $results = $mysqli->query( "SELECT * FROM `$table_name`" );
     return $results->fetch_all( MYSQLI_ASSOC );
 }
 
 function getTrips(){
+    /*
+     * Function to get trips from DB.
+     * If a user is logged in we will not take his own trips.
+     * */
     global $mysqli;
 
     $sql = "SELECT `trips`.*, `users`.`first_name`, `users`.`last_name`, `users`.`user_image` 
             FROM `trips` LEFT JOIN `users`
             ON `trips`.`user_id` = `users`.`id`";
     if( isLogin() ) {
-        // אם המשתמש מחובר אנו לא רוצים להציג את הטיולים שהוא העלה
+        // checking if a user is logged in so we will not show him his own trips
         $user_id = $_SESSION['user_id'];
         $sql .= " WHERE `trips`.`user_id`!=$user_id";
     }
@@ -112,6 +131,10 @@ function getTrips(){
 }
 
 function insertSearchHistory( $type_id, $theme_id, $season_id, $price_id, $age_range_id ) {
+    /*
+     * Function to insert the search result of the trips that were shown to a user
+
+     * */
     global $mysqli;
     $user_id = 0;
     if( isLogin() ) {

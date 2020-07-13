@@ -7,18 +7,18 @@ if( !isLogin() ) {
 }
 
 if (isset($_REQUEST['share_trip_btn'])) {
-    $destination_id = $_REQUEST['destination_id'];
-    $type_id = $_REQUEST['type_id'];
-    $theme_id = $_REQUEST['theme_id'];
-    $season_id = $_REQUEST['season_id'];
-    $age_range_id = $_REQUEST['age_range_id'];
-    $price_id = $_REQUEST['price_id'];
-    $trip_story = $_REQUEST['trip_story'];
-    $recommended_attractions = $_REQUEST['recommended_attractions'];
-    $places_to_eat = $_REQUEST['places_to_eat'];
-    $hotels = $_REQUEST['hotels'];
-    $good_to_know  = $_REQUEST['good_to_know'];
-    $thing_to_give_up  = $_REQUEST['thing_to_give_up'];
+    $destination_id = htmlspecialchars($_REQUEST['destination_id']);
+    $type_id = htmlspecialchars($_REQUEST['type_id']);
+    $theme_id = htmlspecialchars($_REQUEST['theme_id']);
+    $season_id = htmlspecialchars($_REQUEST['season_id']);
+    $age_range_id = htmlspecialchars($_REQUEST['age_range_id']);
+    $price_id = htmlspecialchars($_REQUEST['price_id']);
+    $trip_story = htmlspecialchars($_REQUEST['trip_story']);
+    $recommended_attractions = htmlspecialchars($_REQUEST['recommended_attractions']);
+    $places_to_eat = htmlspecialchars($_REQUEST['places_to_eat']);
+    $hotels = htmlspecialchars($_REQUEST['hotels']);
+    $good_to_know  = htmlspecialchars($_REQUEST['good_to_know']);
+    $thing_to_give_up  = htmlspecialchars($_REQUEST['thing_to_give_up']);
     addNewTrip(
         $_SESSION['user_id'],
         $destination_id,
