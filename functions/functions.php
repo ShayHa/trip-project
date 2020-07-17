@@ -132,8 +132,9 @@ function getTrips(){
 
 function insertSearchHistory( $type_id, $theme_id, $season_id, $price_id, $age_range_id ) {
     /*
-     * Function to insert the search result of the trips that were shown to a user
-
+     * Function to insert the search a user or a guest searched for.
+     * Saves the user id if he was logged it, else default value of 0
+     * https://www.w3schools.com/php/func_mysqli_insert_id.asp Auto generate the id to return the search_id
      * */
     global $mysqli;
     $user_id = 0;
@@ -148,16 +149,12 @@ function insertSearchHistory( $type_id, $theme_id, $season_id, $price_id, $age_r
 }
 
 function getSearchStats( $search_type ) { // $search_type => type_id, theme_id, season_id....
+    /*
+     * !!!NOT IN USE ANYMORE!!!
+     * Function used to give result for each search
+     * */
     global $mysqli;
     $sql = "SELECT `$search_type`, COUNT(*) AS `count` FROM `search_history` GROUP BY `$search_type`";
-
-//     $sql = "SELECT `seasons`.`id`, `search_history`.`$search_type`, `search_history`.COUNT(*) AS `count`
-//            FROM `seasons` LEFT JOIN `search_history` GROUP BY `search_history`.`$search_type`";
-//    $sql = "select `$search_type`, COALESCE(count(search_history.season_id),0) AS `count`
-//            from seasons left join search_history on seasons.id = search_history.season_id group by season_name";
-//     echo $sql;
-
-
     $result = $mysqli->query( $sql );
     return $result->fetch_all( MYSQLI_ASSOC );
 }
@@ -165,9 +162,8 @@ function getSearchStats( $search_type ) { // $search_type => type_id, theme_id, 
 
 function insertSearchTrip( $search_id, $trip_id, $score ) {
     /*
-     * @param: search_id:
-     *
-     *
+     * Inserting the trips that were shown as results.
+     * Saving the trip_id as well as the score it got.
      * */
     global $mysqli;
     $insert = "INSERT INTO `search_history_trips` (`search_id`, `trip_id`, `score`) VALUES ( $search_id, $trip_id, $score )";
@@ -299,7 +295,8 @@ function getResultForMonthlyRegistered(){
                      count(*) as \"registered users\" 
             FROM users u 
             group by month, year 
-            HAVING year = 2020";
+            HAVING year = 2020
+            order by FIELD(month,'January','February','March','April','May','June','July','August','September','October','November','December')";
 
     $result = $mysqli->query($sql);
     return $result->fetch_all(MYSQLI_ASSOC);
