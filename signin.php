@@ -14,8 +14,6 @@ if( isset( $_REQUEST['signin-btn']) ) {
 include "header.php";
 ?>
 
-
-
     <link rel="stylesheet" href="style/sign_in_style.css">
 
     <div class="login-clean">
@@ -47,29 +45,6 @@ include "header.php";
 <!--            <a href="#" class="forgot">Forgot your email or password?</a>-->
         </form>
     </div>
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>-->
-
-
-
-<!--    <form action="signin.php" method="post">-->
-<!--        <table>-->
-<!--            <tr>-->
-<!--                <td>Email</td>-->
-<!--                <td><input type="email" name="email" placeholder="Enter your email address" required></td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td>Password</td>-->
-<!--                <td><input type="password" name="password" placeholder="Enter your password" required></td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td>-->
-<!--                    <input type="submit" name="signin-btn" value="SIGN IN">-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--        </table>-->
-<!--    </form>-->
-
 
 <?php
 include "footer.php";
