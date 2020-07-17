@@ -1,7 +1,7 @@
 <?php
 include "functions/functions.php";
 
-if( !isLogin() ) {
+if (!isLogin()) {
     header('location:signin.php');
     exit;
 }
@@ -17,8 +17,8 @@ if (isset($_REQUEST['share_trip_btn'])) {
     $recommended_attractions = htmlspecialchars($_REQUEST['recommended_attractions']);
     $places_to_eat = htmlspecialchars($_REQUEST['places_to_eat']);
     $hotels = htmlspecialchars($_REQUEST['hotels']);
-    $good_to_know  = htmlspecialchars($_REQUEST['good_to_know']);
-    $thing_to_give_up  = htmlspecialchars($_REQUEST['thing_to_give_up']);
+    $good_to_know = htmlspecialchars($_REQUEST['good_to_know']);
+    $thing_to_give_up = htmlspecialchars($_REQUEST['thing_to_give_up']);
     addNewTrip(
         $_SESSION['user_id'],
         $destination_id,
@@ -41,14 +41,15 @@ if (isset($_REQUEST['share_trip_btn'])) {
 
 include "header.php";
 ?>
-    <form class="center_div" id="form-div" action="share_trip.php" method="post" onsubmit="alert('Thank you for the share! click ok to share')">
-        <div style="padding: 35px; margin-left: 25px; color: #fbfbfb">
+<form class="center_div" id="form-div" action="share_trip.php" method="post"
+      onsubmit="alert('Thank you for the share! click ok to share')">
+    <div style="padding: 35px; margin-left: 25px; color: #fbfbfb">
         <div>
-        <label for=""><span class="required"> * </span> Destination
-            <select id="" name="destination_id">
-                <option value="1">Tel Aviv </option>
+            <label for=""><span class="required"> * </span> Destination
+                <select id="" name="destination_id">
+                    <option value="1">Tel Aviv</option>
                 </select>
-        </label>
+            </label>
         </div>
         <!-- Type-->
         <div>
@@ -125,9 +126,9 @@ include "header.php";
                 </select>
             </label>
         </div>
-        </div>
-        <!-- Story -->
-        <div style="padding: 30px; margin-left: 25px">
+    </div>
+    <!-- Story -->
+    <div style="padding: 30px; margin-left: 25px">
         <div>
 
             <textarea class="feedback-input comment" name="trip_story" cols="40" rows="10"
@@ -154,7 +155,7 @@ include "header.php";
         <!-- Good to know -->
         <div>
 
-            <textarea class="feedback-input comment"  name="good_to_know" cols="40" rows="10"
+            <textarea class="feedback-input comment" name="good_to_know" cols="40" rows="10"
                       placeholder="Tell us about your good to know stuff"></textarea>
         </div>
         <!-- Give up -->
@@ -163,11 +164,11 @@ include "header.php";
             <textarea class="feedback-input comment" name="thing_to_give_up" cols="40" rows="10"
                       placeholder="Tell us about your give up stuff"></textarea>
         </div>
-        </div>
-        <div class="">
+    </div>
+    <div class="">
         <input class="btn btn-block btn-color" type="submit" name="share_trip_btn" value="SHARE">
-        </div>
-    </form>
+    </div>
+</form>
 <?php
 include "footer.php";
 ?>

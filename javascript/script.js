@@ -14,7 +14,7 @@ function checkWeights() {
     var age_weight = parseInt( document.getElementById('age_weight').value );
     var total_weight = type_weight + theme_weight + season_weight + price_weight + age_weight;
     if( total_weight !== 100 ) {
-        alert( "Total weights must be equal to 100" );
+        alert( "Total weights must be equal to 100%" );
         return false;
     }
     return true;
@@ -28,7 +28,7 @@ function updateTotalWeight( input ) {
     var age_weight = parseInt( document.getElementById('age_weight').value );
     var total_weight = type_weight + theme_weight + season_weight + price_weight + age_weight;
     console.log('total_weight')
-    document.getElementById('total_weight').innerHTML = parseInt(total_weight);
+    document.getElementById('total_weight').innerHTML = parseInt(total_weight)+"%";
 
 }
 

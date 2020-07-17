@@ -141,8 +141,8 @@ function insertSearchHistory( $type_id, $theme_id, $season_id, $price_id, $age_r
     if( isLogin() ) {
         $user_id = $_SESSION['user_id'];
     }
-    $insert = "INSERT INTO `search_history` (type_id, user_id, theme_id, season_id, price_id, age_range_id )
-                                            VALUES($type_id, $user_id, $theme_id, $season_id, $price_id, $age_range_id )";
+    $insert = "INSERT INTO `search_history` (user_id,type_id, theme_id, season_id, price_id, age_range_id )
+                                            VALUES($user_id,$type_id, $theme_id, $season_id, $price_id, $age_range_id )";
 
     $mysqli->query( $insert );
     return $mysqli->insert_id;

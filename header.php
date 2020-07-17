@@ -10,22 +10,6 @@
     </head>
     <body>
         <header>
-            <!-- Table Header -->
-<!--            <table style="width: 1200px; margin: 0 auto;">-->
-<!--                <tr>-->
-<!--                    <td style="width: 50%;">-->
-<!--                        <a href="home.php">BestT(r)ip</a>-->
-<!--                        <a href="share_trip.php">Share your trip</a>-->
-<!--                    </td>-->
-<!--                    <td style="width: 50%; text-align: right;">-->
-<!--                        <a href="signin.php">Sign in</a>-->
-<!---->
-<!--                        <a href="signup.php">Sign up</a>-->
-<!--                    </td>-->
-<!---->
-<!--                </tr>-->
-<!--            </table>-->
-
             <?php
             if( isLogin() ) {
 
@@ -59,7 +43,7 @@
                             <a href="messages.php" class="<?php echo $class;?>">
                                 <span style="position:relative;bottom:9px"><?php echo $num_of_messages; ?></span></a>
                         </li>
-                        <li id="signup"><a href="logout.php">Logout</a></li>
+                        <li id="logout"><a href="logout.php">Logout</a></li>
                     <?php
                     } else { ?>
                         <li id="signin"><a href="signin.php"> Sign in </a></li>
