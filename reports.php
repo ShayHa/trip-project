@@ -7,9 +7,9 @@ if (!isLogin() or !$_SESSION['is_admin']) {
     header('location:home.php');
     exit;
 }
-
 ?>
 
+<!-- First Graph  Start-->
 <?php
 $data = getResultForSeason('trip_types.id', 'type_name', 'type_id', 'trip_types');
 $field_name = 'type_name';
@@ -42,20 +42,19 @@ foreach ($data as $row) {
 }
 
 ?>
+<!-- First Graph  Finish-->
 
-
+<!-- Second Graph  Start-->
 <?php
-
-
 $pie_date = getResultForMonthlyRegistered();
 $dataPoints = array();
 foreach ($pie_date as $row) {
     array_push($dataPoints, array("label" => $row['month'], "y" => $row['registered users']));
 }
-
-
 ?>
+<!-- Second Graph  Finish-->
 
+<!-- Third Graph  Start-->
 <?php
 $line_data = getTripsAdded();
 $points_date = array();
@@ -83,6 +82,7 @@ foreach ($points_date as $point) {
 }
 //echo $s;
 ?>
+<!-- Third Graph  Finish-->
 
     <!--    Script for parameter chart-->
     <!--    Used this guide to make it:-->
@@ -90,7 +90,6 @@ foreach ($points_date as $point) {
     <!--    https://canvasjs.com/docs/charts/chart-options/data/indexlabel/-->
     <!--    https://www.chartjs.org/docs/latest/charts/mixed.html-->
     <!--    https://canvasjs.com/docs/charts/how-to/render-multiple-charts-in-a-page/-->
-
     <!--        Menu to see all charts-->
     <!--    https://canvasjs.com/javascript-charts/chart-index-data-label/-->
     <!--            all chart options-->

@@ -7,12 +7,12 @@ $sent_msg = null;
     then check if is is the same user before the send message
 */
 $trip_id = 1;
-if( isset( $_REQUEST['trip_id']) ) {
+if(isset( $_REQUEST['trip_id'])) {
     $trip_id = $_REQUEST['trip_id'];
 }
 $trip = getTripById($trip_id);
 
-if( isLogin()  )  {
+if(isLogin())  {
 
     if (isset($_REQUEST['send_message'])) {
         insertMessage($_REQUEST['message'], $_SESSION['user_id'], $_REQUEST['to_user_id'] );
@@ -20,20 +20,8 @@ if( isLogin()  )  {
     }
 }
 
-//
-
-
-
 $points = getPoints($trip_id);
-
 include "header.php";
-
-//if ( $trip['user_id'] == $_SESSION['user_id'] & true){
-//    echo print_r($trip);
-//}
-#echo $trip['user_id'];
-//echo $_SESSION['user_id'];
-#echo print_r($points);
 ?>
 <div>
     <table style="width: 100%;" class="trip_info">

@@ -24,7 +24,7 @@
                     <li><a href="share_trip.php"> Share Your T(r)ip </a></li>
                     <?php
                     if( isLogin() && $_SESSION['is_admin'] == 1 ) { ?>
-                        <li><a href="try2.php"> Reports </a></li>
+                        <li><a href="reports.php"> Reports </a></li>
 
                     <?php
                     }

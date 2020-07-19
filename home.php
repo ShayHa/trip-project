@@ -229,7 +229,7 @@ if (isset($trips) && sizeof($trips) > 0 && !$validation_error) { ?>
                             echo substr($trip['trip_story'], 0, 300);
                             ?>
                         </p>
-                        <p>
+                        <p> <!-- query string ref. key=value (trip_id=id)-->
                             <a href="trip.php?trip_id=<?php echo $trip['id']; ?>">Read more...</a>
                         </p>
                     </td>

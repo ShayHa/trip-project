@@ -8,7 +8,7 @@ if( !isLogin()) {
 }
 
 include "header.php";
-$all_trips = getUserTrips( $_SESSION['user_id'] );
+$all_trips = getUserTrips($_SESSION['user_id']);
 #echo sizeof($all_messages);
 ?>
     <div class="trip_box">
@@ -24,7 +24,6 @@ $all_trips = getUserTrips( $_SESSION['user_id'] );
             <?php
             $counter = 1;
             foreach ( $all_trips as $trip ) {
-
                 ?>
                 <tr class="">
                     <td><?php echo $counter++; ?></td>

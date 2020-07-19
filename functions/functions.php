@@ -171,14 +171,22 @@ function insertSearchTrip( $search_id, $trip_id, $score ) {
 }
 
 function insertMessage( $message, $from_user_id, $to_user_id ) {
+    /*
+     * Inserting messages from user to user so we can track which user read which message.
+     * */
     global $mysqli;
     $insert = "INSERT INTO `messages` (`message`, `from_user_id`, `to_user_id`) VALUES ( '$message', $from_user_id, $to_user_id )";
     $mysqli->query( $insert );
 }
 
 function getMessages( $user_id, $only_not_opened = true ) {
+    /*
+     * only_not_open = true --> shows only messages that the user did not see
+     * only_not_open = false --> shows all messages
+     *
+     * */
     global $mysqli;
-    if( $only_not_opened ) {
+    if($only_not_opened) {
         $sql = "SELECT * FROM `messages` WHERE `to_user_id`=$user_id AND `is_opened`=0 ORDER BY `date_sent` DESC";
     } else {
         $sql = "SELECT * FROM `messages` WHERE `to_user_id`=$user_id ORDER BY `date_sent` DESC";
@@ -197,6 +205,11 @@ function setMessagesStatus( $from_user_id, $to_user_id ) {
 }
 
 function getTripById( $trip_id ){
+    /*
+     * Function to get the user trip by trip_id
+     * Since trip id is unique and connected to a specific user we can obtain the
+     * trip and user details by trip_id
+     * */
     global $mysqli;
     $sql = "SELECT `trips`.*, `users`.`first_name`, `users`.`last_name`, `users`.`email`, `users`.`user_image` 
             FROM `trips` LEFT JOIN `users`
@@ -206,8 +219,12 @@ function getTripById( $trip_id ){
     return $results->fetch_assoc( );
 }
 
-#return the points of each user
+
 function getPoints($trip_id){
+    /*
+     * Get the points of a user based on the trip id.
+     *
+     * */
     global $mysqli;
     $sql =  "SELECT points
                 FROM `users` u left join `trips` t on u.id = t.user_id
@@ -216,8 +233,11 @@ function getPoints($trip_id){
     return $results->fetch_assoc( );
 }
 
-#update the points after user adds a trip
 function updatePoints($user_id){
+    /*
+     * Update the user points after he added a trip
+     *
+     * */
     global $mysqli;
     $sql = "
             UPDATE users 
@@ -226,7 +246,6 @@ function updatePoints($user_id){
             WHERE
             users.id = $user_id";
     $mysqli->query( $sql );
-
 }
 
 function addNewTrip(
@@ -243,6 +262,10 @@ function addNewTrip(
     $hotels,
     $good_to_know,
     $thing_to_give_up ) {
+    /*
+     * Inserting a new trip the user shared into the trips table
+     *
+     * */
     global $mysqli;
     $insert = "INSERT INTO `trips` 
                           (user_id, destination_id, type_id, theme_id, season_id, age_range_id, price_id, trip_story,recommended_attractions, places_to_eat, hotels, good_to_know, thing_to_give_up)
@@ -258,7 +281,9 @@ function getRelation( $relation_type, $from, $to ) {
 }
 
 function getUserTrips($user_id){
-
+    /*
+     * Function to get users trips
+     * */
     global $mysqli;
     $sql = "SELECT * FROM `trips` WHERE `user_id`=$user_id ORDER BY `date_added` DESC";
     $result = $mysqli->query( $sql );
@@ -315,3 +340,5 @@ function getTripsAdded(){
     $result = $mysqli->query($sql);
     return $result->fetch_all(MYSQLI_ASSOC);
 }
+
+
