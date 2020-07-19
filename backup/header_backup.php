@@ -7,7 +7,7 @@
 
         <title>BestT(r)ip</title>
 
-        <link rel="stylesheet" href="style/app.css">
+        <link rel="stylesheet" href="../style/app.css">
     </head>
     <body>
         <header>
@@ -36,9 +36,9 @@
             ?>
             <div class="nav">
                 <ul>
-                    <li><a href="home.php"> Best T(r)ips </a></li>
-                    <li><a href="about.php"> About Us </a></li>
-                    <li><a href="share_trip.php"> Share Your T(r)ip </a></li>
+                    <li><a href="../home.php"> Best T(r)ips </a></li>
+                    <li><a href="../about.php"> About Us </a></li>
+                    <li><a href="../share_trip.php"> Share Your T(r)ip </a></li>
                     <?php
                     if( isLogin() && $_SESSION['is_admin'] == 1 ) { ?>
                         <li><a href="try3.php"> Reports </a></li>
@@ -48,7 +48,7 @@
                     ?>
                     <?php
                     if( isLogin() ) { ?>
-                        <li><a href="user_trips.php"> My Tr(i)ps </a></li>
+                        <li><a href="../user_trips.php"> My Tr(i)ps </a></li>
                         <li id="signin">
                             <a href="#">Hello <?php echo $_SESSION['first_name']; ?></a>
                             <?php
@@ -57,14 +57,14 @@
                                 $class = "have_messages";
                             }
                             ?>
-                            <a href="messages.php" class="<?php echo $class;?>">
+                            <a href="../messages.php" class="<?php echo $class;?>">
                                 <span style="position:relative;bottom:9px"><?php echo $num_of_messages; ?></span></a>
                         </li>
-                        <li id="signup"><a href="logout.php">Logout</a></li>
+                        <li id="signup"><a href="../logout.php">Logout</a></li>
                     <?php
                     } else { ?>
-                        <li id="signin"><a href="signin.php"> Sign in </a></li>
-                        <li id="signup"><a href="signup.php"> Sign up </a></li>
+                        <li id="signin"><a href="../signin.php"> Sign in </a></li>
+                        <li id="signup"><a href="../signup.php"> Sign up </a></li>
                     <?php
                     }
                     ?>

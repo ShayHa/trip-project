@@ -41,7 +41,7 @@ if (isset($_REQUEST['share_trip_btn'])) {
 
 include "header.php";
 ?>
-    <form class="center_div" id="form-div" action="share_trip.php" method="post" onsubmit="confirm('Thank you for the share! click ok to share')">
+    <form class="center_div" id="form-div" action="../share_trip.php" method="post" onsubmit="confirm('Thank you for the share! click ok to share')">
         <table>
             <!-- Destination-->
             <tr>

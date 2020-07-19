@@ -2,7 +2,7 @@
 include "functions/functions.php";
 
 $sent_msg = null;
-/* Initialize default trip id then take the id from the previous page and find
+/* Initialize default trip id then take the id from the previous page (get method) and find
     the data. After that I get the trip data then check if the user is logged in
     then check if is is the same user before the send message
 */
@@ -13,17 +13,20 @@ if(isset( $_REQUEST['trip_id'])) {
 $trip = getTripById($trip_id);
 
 if(isLogin())  {
-
+    // checking if its a user and not a guest then he can sent a message
+    // and insert the text to DB
     if (isset($_REQUEST['send_message'])) {
         insertMessage($_REQUEST['message'], $_SESSION['user_id'], $_REQUEST['to_user_id'] );
         $sent_msg = "a";
     }
 }
 
+// get the points of the user based on trip_id
 $points = getPoints($trip_id);
 include "header.php";
 ?>
 <div>
+    <!-- Building table to show the trip -->
     <table style="width: 100%;" class="trip_info">
         <tr>
             <td style="width: 20%;"></td>
@@ -62,6 +65,8 @@ include "header.php";
             <td>
                 <?php
                 $types = getTableData('trip_types' );
+                // -1 because values from DB start from zero and adding trip from one
+                // we need to get tabledata since we save the ID in the trip and not the type itself
                 echo $types[ $trip['type_id'] - 1]['type_name'];?>
             </td>
         </tr>
@@ -188,6 +193,8 @@ include "header.php";
             </td>
         </tr>
         <?php
+        // checking if its not a guest then if its not the same user
+        // then he can send a message to other user
         if( isLogin() and ($trip['user_id'] != $_SESSION['user_id'] )) {
             ?>
             <tr>

@@ -2,8 +2,9 @@
 include "functions/functions.php";
 include "header.php";
 
+// if a guest or not admin found the page it will redirect to home page
 if (!isLogin() or !$_SESSION['is_admin']) {
-    echo '<script language="javascript"> alert("message successfully sent") </script>';
+
     header('location:home.php');
     exit;
 }

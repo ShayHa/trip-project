@@ -16,7 +16,7 @@ $all_messages = getMessages($_SESSION['user_id'], false);
             echo "<span class='check'>" . "It seems that you do not have any messages, maybe you should share more!" . "</span>";
         } else {
             ?>
-            <table style="width: 100%;text-align: center;" border="1">
+            <table class="" style="width: 100%;text-align: center;" border="1">
                 <tr>
                     <th>#</th>
                     <th>From</th>
@@ -28,6 +28,8 @@ $all_messages = getMessages($_SESSION['user_id'], false);
                 $counter = 1;
                 foreach ($all_messages as $message) {
                     $from_user = getUserById($message['from_user_id']);
+                    // this is to change the color of the message from red to white
+                    // means that the user entered to messages page
                     setMessagesStatus($from_user['id'], $_SESSION['user_id']);
                     ?>
                     <tr class="<?php if ($message['is_opened'] == 0) {

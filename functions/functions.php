@@ -4,12 +4,15 @@ session_start();
 define( "MAX_SEARCH_RESULTS", "5" );
 /*
  * Initialize DB connection
+ * From outer config file
  */
+
 $configs = include("../config.php");
 $host = $configs['host'];
 $database = $configs['database'];
 $user =$configs['user'];
 $password = $configs['password'];
+
 // mysqli constructor
 $mysqli = new mysqli( $host, $user, $password, $database );
 /*

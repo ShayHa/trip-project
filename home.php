@@ -4,18 +4,24 @@ include "header.php";
 
 $weights = getTableData('weights');
 if (isset($_REQUEST['search_button'])) {
-    $trips = getTrips();
+
     $theme_id = $_REQUEST['theme_id'];
+    $type_id = $_REQUEST['type_id'];
+    $season_id = $_REQUEST['season_id'];
+    $price_id = $_REQUEST['price_id'];
+    $age_range_id = $_REQUEST['age_range_id'];
 
     $validation_error = false;
-    if ($_REQUEST['type_id'] == 0 || $_REQUEST['theme_id'] == 0 || $_REQUEST['season_id'] == 0 || $_REQUEST['price_id'] == 0 || $_REQUEST['age_range_id'] == 0) {
+    // This if is to check if the user tried to search without all of the parameters
+    if ( $type_id== 0 || $theme_id == 0 || $season_id== 0 || $price_id == 0 ||  $age_range_id== 0) {
         $validation_error = true;
         ?>
         <script>
-            alert('נא לבחור את כל הפרמטרים של החיפוש');
+            alert('Please choose all of the parameters');
         </script>
         <?php
     } else {
+        $trips = getTrips();
         // compare the results between to_relation
         for ($i = 0; $i < sizeof($trips); $i++) {
             $relation = getRelation('Type', $_REQUEST['type_id'], $trips[$i]['type_id']);
@@ -40,14 +46,15 @@ if (isset($_REQUEST['search_button'])) {
         });
 
 
-        // שמירת פרמטרים החיפוש בטבלה search_history
-        $search_id = insertSearchHistory($_REQUEST['type_id'], $_REQUEST['theme_id'], $_REQUEST['season_id'], $_REQUEST['price_id'], $_REQUEST['age_range_id']);
+        // save parameters in search_history table
+        $search_id = insertSearchHistory($_REQUEST['type_id'], $_REQUEST['theme_id'], $_REQUEST['season_id'],
+            $_REQUEST['price_id'], $_REQUEST['age_range_id']);
         if (isset($trips) && sizeof($trips) > 0) {
-            // עבור כל טיול שהתקבל אנו שומרים בטבלה search_history_trips
+            // saving every result trip in search_history_trips
             $counter = 0;
             foreach ($trips as $trip) {
                 insertSearchTrip($search_id, $trip['id'], $trip['score']);
-                //  save only 5 trips
+                // save only 5 trips
                 $counter++;
                 if ($counter == MAX_SEARCH_RESULTS) {
                     break;
@@ -57,6 +64,7 @@ if (isset($_REQUEST['search_button'])) {
     }
 }
 ?>
+<!-- Build the search div -->
 <div style="padding: 400px 50px 30px 50px; background-image: url('images/index.jpg'); background-repeat: no-repeat">
     <div class="sigi">
         <form action="home.php" method="post" onsubmit="return checkWeights()">

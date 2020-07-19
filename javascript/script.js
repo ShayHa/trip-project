@@ -27,8 +27,14 @@ function updateTotalWeight( input ) {
     var price_weight = parseInt( document.getElementById('price_weight').value );
     var age_weight = parseInt( document.getElementById('age_weight').value );
     var total_weight = type_weight + theme_weight + season_weight + price_weight + age_weight;
-    console.log('total_weight')
     document.getElementById('total_weight').innerHTML = parseInt(total_weight)+"%";
+    // make the weight red if it passes 100
+    if (total_weight >100){
+        document.getElementById('total_weight').style.color = 'red';
+    }
+    else {
+        document.getElementById('total_weight').style.color = 'white';
+    }
 
 }
 
