@@ -38,6 +38,7 @@ if (isset($_REQUEST['search_button'])) {
 
             $relation = getRelation('Age', $_REQUEST['age_range_id'], $trips[$i]['age_range_id']);
             $trips[$i]['score'] += $relation['value'] * $_REQUEST['age_weight'];
+            $trips[$i]['score'] = floor($trips[$i]['score']);
         }
 
         // sort the array of trips by score value from high to low
