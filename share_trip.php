@@ -42,7 +42,7 @@ if (isset($_REQUEST['share_trip_btn'])) {
 include "header.php";
 ?>
 <form class="center_div" id="form-div" action="share_trip.php" method="post"
-      onsubmit="alert('Thank you for the share! click ok to share')">
+      onsubmit="alert('Thank you for sharing! click ok to share')">
     <div style="padding: 35px; margin-left: 25px; color: #fbfbfb">
         <div>
             <label for=""><span class="required"> * </span> Destination

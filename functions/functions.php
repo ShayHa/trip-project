@@ -325,7 +325,7 @@ function getResultForSeason($join_on, $field_name,$history_col,$table_name) { //
     global $mysqli;
 
     $sql = "select `$field_name`, COALESCE(count(search_history.$history_col),0) AS `count`
-            from `$table_name` left join search_history on $join_on = search_history.$history_col group by `$field_name`";
+            from `$table_name` left join search_history on $join_on = search_history.$history_col group by `$field_name` order by `count` asc ";
 
 //    echo $sql;
     $result = $mysqli->query( $sql );

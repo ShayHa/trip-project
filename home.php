@@ -175,7 +175,7 @@ if (isset($_REQUEST['search_button'])) {
             <div id="weights_section">
                 <div id='wrapper' style="display: none">
                     <div id='left'><a href="#" id="change_weights" onclick="changeWeight()">Change Weights</a></div>
-                    <div id="right"> Don't like the results? You can change the weights</div>
+                    <div id="right"> Don't like the results? You can change the weights of the parameters</div>
                 </div>
 
                 <!-- Weights numbers -->

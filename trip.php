@@ -65,9 +65,13 @@ include "header.php";
             <td>
                 <?php
                 $types = getTableData('trip_types' );
-                // -1 because values from DB start from zero and adding trip from one
+                // -1 because values in PHP starts from 0
                 // we need to get tabledata since we save the ID in the trip and not the type itself
-                echo $types[ $trip['type_id'] - 1]['type_name'];?>
+                echo $types[ $trip['type_id'] - 1]['type_name'];
+                //print_r($types[0]);
+                ?>
+                
+
             </td>
         </tr>
         <tr>
