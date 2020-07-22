@@ -228,8 +228,10 @@ h1, h2, h3, h4, h5 , h6{
 
 .comment{
 
-    /*background-image: url(http://rexkirby.com/kirbyandson/images/comment.svg);*/
-    background-image: url(https://i.imgur.com/153G4Ni.png);
+    /*background-image: url(http://rexkirby.com/kirbyandson/images/comment.svg);
+    https://i.imgur.com/153G4Ni.png
+    */
+    background-image: url('../images/pen.png');
     background-size: 30px 30px;
     background-position: 11px 8px;
     background-repeat: no-repeat;

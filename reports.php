@@ -103,7 +103,13 @@ foreach ($points_date as $point) {
                 animationEnabled: true,
                 theme: "light2",
                 title: {
-                    text: "Parameter <?php echo explode('_', $field_name)[0]; ?> Result"
+                    text: "Parameter <?php
+                        if (explode('_', $field_name)[0] == 'range'){
+                            echo 'Age Range';
+                        }
+                        else {
+                            echo explode('_', $field_name)[0];
+                        }; ?> Result"
                 },
                 axisX: {
                     interval: 1
