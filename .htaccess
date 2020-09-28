@@ -1,2 +1,3 @@
 Options -Indexes
-Redirect 404 trip-project/home.php
+Redirect 404 / /trip-project/home.php
+Redirect 403 / /trip-project/home.php
